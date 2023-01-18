@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ public static class DependencyInjection
     {
         // hard coded connection string configuration property to change afterwards
         string? connectionString = configuration.GetConnectionString("Dev");
-        if (connectionString != null || connectionString.Length > 0)
+        if (!connectionString.IsNullOrEmpty())
         {
             services.AddDbContext<HotelManagementDbContext>(options =>
             {
