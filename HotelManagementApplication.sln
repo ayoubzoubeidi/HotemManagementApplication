@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotemManagementApplication", "HotemManagementApplication\HotemManagementApplication.csproj", "{F515F269-E5D5-4CB8-9B01-5367B9AB1BE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelManagementApplication", "HotemManagementApplication\HotelManagementApplication.csproj", "{F515F269-E5D5-4CB8-9B01-5367B9AB1BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelManagementDataLibrary", "HotelManagementDataLibrary\HotelManagementDataLibrary.csproj", "{692E010A-68C7-46CF-A0E8-C57AF4917AFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelManagementDataLibrary", "HotelManagementDataLibrary\HotelManagementDataLibrary.csproj", "{692E010A-68C7-46CF-A0E8-C57AF4917AFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
