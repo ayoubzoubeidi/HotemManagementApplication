@@ -12,6 +12,6 @@ public class Guest : BaseModel
 
     public DateOnly DateOfBirth { get; set; }
 
-    public List<Reservation> reservations { get; set; } = new();
+    public List<Reservation> Reservations { get; set; } = new();
 
 }

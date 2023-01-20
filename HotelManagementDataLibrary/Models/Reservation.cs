@@ -7,7 +7,7 @@ public class Reservation : BaseModel
 
     public DateTime CheckIn { get; set; }
     public DateTime CheckOut { get; set; }
-
+    public ReservationStatus Status { get; set; }
     public bool meal { get; set; }
     public int adults { get; set; }
     public int children { get; set; }
