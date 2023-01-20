@@ -13,32 +13,43 @@ public class GuestRepository : IGuestRepository
         _dbContext = context;
     }
 
+    public async Task<IEnumerable<Guest>> GetAll()
+    {
+        return await _dbContext.Guests.ToListAsync();
+    }
+
     public async Task<Guest?> GetGusetByCin(string cin)
     {
-        return await _dbContext.Set<Guest>().FirstOrDefaultAsync(guest => guest.CIN == cin);
+        return await _dbContext.Guests.FirstOrDefaultAsync(guest => guest.CIN == cin);
     }
 
     public async Task<Guest?> GetGusetByEmail(string email)
     {
-        return await _dbContext.Set<Guest>().FirstOrDefaultAsync(guest => guest.Email == email);
+        return await _dbContext.Guests.FirstOrDefaultAsync(guest => guest.Email == email);
     }
 
     public async Task<Guest?> GetGusetById(Guid id)
     {
-        return await _dbContext.Set<Guest>().FirstOrDefaultAsync(guest => guest.Id == id);
+        return await _dbContext.Guests.FirstOrDefaultAsync(guest => guest.Id == id);
     }
 
-    public async void SaveGuest(Guest guest)
+    public async Task SaveGuest(Guest guest)
     {
-        await _dbContext.Set<Guest>().AddAsync(guest);
+        await _dbContext.Guests.AddAsync(guest);
         await _dbContext.SaveChangesAsync();
 
     }
 
-    public async void UpdateGuest(Guid id, Guest guest)
+    public async Task UpdateGuest(Guid id, Guest guest)
     {
-        _dbContext.Entry(await _dbContext.Set<Guest>()
-            .FirstOrDefaultAsync(guest => guest.Id == id)).CurrentValues.SetValues(guest);
+        var savedGuest = await _dbContext.Guests
+            .FirstOrDefaultAsync(guest => guest.Id == id);
+
+        savedGuest.DateOfBirth = guest.DateOfBirth;
+        savedGuest.FirstName = guest.FirstName;
+        savedGuest.LastName = guest.LastName;
+        savedGuest.Email = guest.Email;
+
         await _dbContext.SaveChangesAsync();
         
     }

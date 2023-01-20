@@ -1,12 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotelManagementAbstractions.Repository;
+using HotelManagementDataLibrary.Repository;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelManagementDataLibrary;
 public static class DependencyInjection
@@ -22,6 +19,7 @@ public static class DependencyInjection
             {
                 options.UseSqlServer(connectionString);
             });
+            services.AddScoped<IGuestRepository, GuestRepository>();
         }
 
     }
