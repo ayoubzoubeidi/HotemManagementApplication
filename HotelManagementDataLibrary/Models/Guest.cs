@@ -1,5 +1,5 @@
 ﻿namespace HotelManagementDataLibrary.Models;
-public class Client : BaseModel
+public class Guest : BaseModel
 {
 
     public string FirstName { get; set; }
@@ -11,5 +11,7 @@ public class Client : BaseModel
     public string CIN { get; set; }
 
     public DateOnly DateOfBirth { get; set; }
+
+    public List<Reservation> reservations { get; set; } = new();
 
 }

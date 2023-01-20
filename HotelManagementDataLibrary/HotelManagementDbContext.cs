@@ -11,7 +11,5 @@ public class HotelManagementDbContext : DbContext
     public HotelManagementDbContext(DbContextOptions<HotelManagementDbContext> options) : base(options)
     {
     }
-
-
-
+    
 }
