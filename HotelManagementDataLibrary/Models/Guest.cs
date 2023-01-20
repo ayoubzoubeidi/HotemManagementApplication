@@ -10,7 +10,7 @@ public class Guest : BaseModel
 
     public string CIN { get; set; }
 
-    public DateOnly DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }
 
     public List<Reservation> Reservations { get; set; } = new();
 
