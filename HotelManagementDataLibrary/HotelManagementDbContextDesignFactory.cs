@@ -16,7 +16,6 @@ public class HotelManagementDbContextDesignFactory : IDesignTimeDbContextFactory
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
-
         var optionsBuilder = new DbContextOptionsBuilder<HotelManagementDbContext>();
         optionsBuilder.UseSqlServer(configuration.GetConnectionString("Dev"));
         Console.WriteLine(configuration.GetConnectionString("Dev"));

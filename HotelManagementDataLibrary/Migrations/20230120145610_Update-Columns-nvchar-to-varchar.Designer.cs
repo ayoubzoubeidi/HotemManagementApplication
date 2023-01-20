@@ -4,6 +4,7 @@ using HotelManagementDataLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelManagementDataLibrary.Migrations
 {
     [DbContext(typeof(HotelManagementDbContext))]
-    partial class HotelManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230120145610_Update-Columns-nvchar-to-varchar")]
+    partial class UpdateColumnsnvchartovarchar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -60,6 +60,11 @@ public class HotelManagementDbContext : DbContext
                 er.Property(room => room.Price).HasPrecision(18, 2);
             });
 
+        builder.Entity<RoomType>(ert => {
+            ert.Property(roomType => roomType.Name).HasColumnType("varchar(20)");
+            ert.Property(roomType => roomType.Description).HasColumnType("varchar(20)");
+        });
+
         builder.Entity<Personnel>(ep =>
         {
             ep.Property(personnel => personnel.FirstName).HasColumnType("varchar(20)");
