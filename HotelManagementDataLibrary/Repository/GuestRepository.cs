@@ -1,5 +1,6 @@
 ﻿using HotelManagementAbstractions.Repository;
 using HotelManagementDataLibrary.Models;
+using HotelManagementDataLibrary.Projections;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagementDataLibrary.Repository;
@@ -16,6 +17,18 @@ public class GuestRepository : IGuestRepository
     public async Task<IEnumerable<Guest>> GetAll()
     {
         return await _dbContext.Guests.ToListAsync();
+    }
+
+    public Task<GuestDetails?> GetGuestDetails(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IEnumerable<GuestList>> GetGuestList()
+    {
+        return await _dbContext.Guests.Select(
+            guest => new GuestList(guest.FirstName, guest.LastName, guest.LastName, guest.CIN, guest.DateOfBirth)
+            ).ToListAsync();
     }
 
     public async Task<Guest?> GetGusetByCin(string cin)
@@ -51,6 +64,6 @@ public class GuestRepository : IGuestRepository
         savedGuest.Email = guest.Email;
 
         await _dbContext.SaveChangesAsync();
-        
+
     }
 }

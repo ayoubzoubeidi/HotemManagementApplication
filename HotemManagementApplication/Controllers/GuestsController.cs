@@ -20,31 +20,34 @@ namespace HotelManagementApplication.Controllers
 
         // GET: api/<GuestsController>
         [HttpGet]
-        public async Task<IEnumerable<Guest>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await _guestRepository.GetAll();
+            return Ok(await _guestRepository.GetAll());
         }
 
         // GET api/<GuestsController>/5
         [HttpGet("{id}")]
-        public async Task<Guest> Get(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            return await _guestRepository.GetGusetById(id);
+            return Ok(await _guestRepository.GetGusetById(id));
         }
 
         // POST api/<GuestsController>
         [HttpPost]
-        public async Task Post([FromBody] Guest guest)
+        public async Task<IActionResult> Post([FromBody] Guest guest)
         {
             await _guestRepository.SaveGuest(guest);
+            return new CreatedAtActionResult(nameof(GetById), "Guests", new { id = guest.Id }, guest);
 
         }
 
         // PUT api/<GuestsController>/5
         [HttpPut("{id}")]
-        public async Task Put(Guid id, [FromBody] Guest guest)
+        public async Task<IActionResult> Put(Guid id, [FromBody] Guest guest)
         {
             await _guestRepository.UpdateGuest(id, guest);
+            return NoContent();
+            
         }
 
     }
