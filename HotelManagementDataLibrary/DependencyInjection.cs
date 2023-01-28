@@ -15,7 +15,7 @@ public static class DependencyInjection
         string? connectionString = configuration.GetConnectionString("Dev");
         if (!connectionString.IsNullOrEmpty())
         {
-            services.AddDbContext<HotelManagementDbContext>(options =>
+            services.AddDbContextPool<HotelManagementDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });

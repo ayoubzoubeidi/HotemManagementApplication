@@ -1,11 +1,18 @@
 using HotelManagementDataLibrary;
+using Serilog;
 
 var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+
+Serilog.ILogger logger = new LoggerConfiguration()
+    .WriteTo.Console().CreateLogger();
+
+builder.Logging.AddSerilog(logger);
 
 // Add services to the container.
-Console.WriteLine(configuration);
+builder.Services.Configure<RouteOptions>(options => options.LowercaseUrls = true);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
